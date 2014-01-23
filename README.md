@@ -4,11 +4,12 @@ ronkyuu
 論及 ronkyuu - mention, reference to, touching upon
 
 Python package to help with parsing, handling and other manipulations
-of the IndieWeb [Webmention](http://indiewebcamp.com/webmention)
+of the IndieWeb Toolkit items, such as:
+* [Webmention](http://indiewebcamp.com/webmention)
+ * Discovery of mentions in a publisher's post, the handling of finding what the Webmention callback is for the reference and also handling of incoming Webmention requests are handled.
+* [RelMe](http://microformats.org/wiki/rel-me)
+ * Take a source URL and a resource URL that is supposed to be a rel=me for the source and verify that it is.
 
-Discovery of mentions in a publisher's post, the handling of finding what the
-Webmention callback is for the reference and also handling of incoming Webmention
-requests are handled.
 
 Roadmap
 =======
@@ -24,9 +25,15 @@ Working
 Pending
 * Flask app to allow test sending of webmentions
 * WebHook listener to trigger events
-* daemon to scan article collections for new and/or changed articles
+* ...
 
 See the examples/ directory for sample command line tools.
+
+Contributors
+============
+* bear (Mike Taylor)
+* kartikprabhu (Kartik Prabhu)
+
 
 WebMentions
 ===========
@@ -61,6 +68,12 @@ Determine if a given resourceURL is authoritative for the profileURL.
 The list of rel="me" links will be discovered if not provided in the optional
 profileRelMes parameter or the resourceRelMes paramter.
 
+Validators
+==========
+URLValidator class
+
+TODO: fill in details of how to use
+
 Events
 ======
 During the processing each task, be it an incoming webmention, reply or even a new
@@ -78,11 +91,11 @@ a Flask listener for WebHook urls and then call the event plugins.
 Events consist of the event type and a payload - not much else is really needed.
 
 * webmention inbound
-** source url, target url
+ * source url, target url
 * webmention outbound
-** source url, target url
+ * source url, target url
 * article post
-** source url or file
+ * source url or file
 
 Requires
 ========
